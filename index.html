@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026CounterApp</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .counter-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .counter-display {
+            font-size: 6rem;
+            font-weight: 800;
+            color: #333;
+            margin: 30px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .counter-display.positive {
+            color: #10b981;
+        }
+        
+        .counter-display.negative {
+            color: #ef4444;
+        }
+        
+        .counter-display.zero {
+            color: #6b7280;
+        }
+        
+        .buttons-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 120px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .decrement-btn {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+        }
+        
+        .decrement-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
+        }
+        
+        .decrement-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .increment-btn {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+        
+        .increment-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+        }
+        
+        .increment-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .reset-btn {
+            background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+            color: white;
+            margin-top: 20px;
+            width: 100%;
+        }
+        
+        .reset-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(107, 114, 128, 0.4);
+        }
+        
+        .reset-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .footer {
+            margin-top: 30px;
+            color: #6b7280;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 480px) {
+            .counter-container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .counter-display {
+                font-size: 4.5rem;
+            }
+            
+            .buttons-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="counter-container">
+        <h1>2026CounterApp</h1>
+        <div id="counter" class="counter-display zero">0</div>
+        
+        <div class="buttons-container">
+            <button class="decrement-btn" onclick="decrement()">- Decrement</button>
+            <button class="increment-btn" onclick="increment()">+ Increment</button>
+        </div>
+        
+        <button class="reset-btn" onclick="reset()">Reset Counter</button>
+        
+        <div class="footer">
+            Simple counter app with + and - buttons
+        </div>
+    </div>
+
+    <script>
+        let count = 0;
+        const counterElement = document.getElementById('counter');
+        
+        function updateDisplay() {
+            counterElement.textContent = count;
+            
+            // Update color based on value
+            counterElement.classList.remove('positive', 'negative', 'zero');
+            if (count > 0) {
+                counterElement.classList.add('positive');
+            } else if (count < 0) {
+                counterElement.classList.add('negative');
+            } else {
+                counterElement.classList.add('zero');
+            }
+        }
+        
+        function increment() {
+            count++;
+            updateDisplay();
+        }
+        
+        function decrement() {
+            count--;
+            updateDisplay();
+        }
+        
+        function reset() {
+            count = 0;
+            updateDisplay();
+        }
+        
+        // Initialize display
+        updateDisplay();
+    </script>
+</body>
+</html>
