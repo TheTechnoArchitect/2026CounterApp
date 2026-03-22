@@ -1,0 +1,15 @@
+{
+  "name": "2026counterapp",
+  "version": "1.0.0",
+  "description": "A simple counter application",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve ."
+  },
+  "keywords": ["counter", "app", "simple", "html"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.0.0"
+  }
+}
