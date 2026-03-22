@@ -13,8 +13,8 @@ RUN npm install -g serve
 # Copy app source
 COPY . .
 
-# Expose port
+# Expose port (Railway will provide PORT env var)
 EXPOSE 3000
 
-# Start the app
-CMD ["serve", "-s", ".", "-l", "3000"]
+# Start the app using PORT from environment (Railway provides PORT)
+CMD ["sh", "-c", "serve -s . -l ${PORT:-3000}"]
